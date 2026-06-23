@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio | Hafiz Ammar Al Arsyad – Cybersecurity & IT</title>
+
+  <!-- Google Fonts: Syne (display) + DM Mono (kode/aksen) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+
+  <!-- Remix Icon (ikon-ikon UI) -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <!-- File CSS kita sendiri -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===================== CURSOR CUSTOM ===================== -->
+  <!-- Titik kursor yang mengikuti mouse -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ===================== TOAST NOTIFICATION ===================== -->
+  <!-- Notifikasi kecil di pojok layar, ditampilkan via JS -->
+  <div class="toast" id="toast">
+    <i class="ri-checkbox-circle-fill"></i>
+    <span id="toastMsg">Berhasil!</span>
+  </div>
+
+  <!-- ===================== MODAL PROJECT ===================== -->
+  <!-- Popup detail project, muncul saat card diklik -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box" id="modalBox">
+      <button class="modal-close" id="modalClose"><i class="ri-close-line"></i></button>
+      <div class="modal-img-wrap">
+        <img src="" alt="Project Preview" id="modalImg" />
+      </div>
+      <div class="modal-content">
+        <span class="modal-badge" id="modalBadge"></span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
+        <div class="modal-tags" id="modalTags"></div>
+        <a href="#" class="btn-primary" id="modalLink" target="_blank">
+          <i class="ri-external-link-line"></i> Lihat Project
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== NAVIGASI ===================== -->
+  <header class="navbar" id="navbar">
+    <a href="#hero" class="nav-logo">
+      <span class="logo-bracket">&lt;</span>Hz<span class="logo-bracket">/&gt;</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#hero"    class="nav-link active">Beranda</a>
+      <a href="#about"   class="nav-link">Tentang</a>
+      <a href="#skills"  class="nav-link">Keahlian</a>
+      <a href="#projects"class="nav-link">Project</a>
+      <a href="#certificates" class="nav-link">Sertifikat</a>
+      <a href="#pkl" class="nav-link">PKL</a>
+      <a href="#drive"   class="nav-link">Karya</a>
+      <a href="#contact" class="nav-link">Kontak</a>
+    </nav>
+    <!-- Tombol hamburger untuk mobile -->
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ===================== HERO / BERANDA ===================== -->
+  <section class="hero" id="hero">
+    <!-- Partikel animasi latar -->
+    <div class="hero-particles" id="heroParticles"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span> Open to PKL
+      </div>
+      <p class="hero-greeting">Halo, saya</p>
+      <h1 class="hero-name">
+        Hafiz<br /><span class="name-accent">Ammar</span>
+      </h1>
+      <!-- Teks yang berubah-ubah otomatis via JS -->
+      <div class="hero-roles">
+        <span class="role-prefix">Seorang </span>
+        <span class="role-text" id="roleText"></span>
+        <span class="role-cursor">|</span>
+      </div>
+      <p class="hero-sub">
+        Siswa Teknik Komputer & Jaringan Kelas 12 · Siap membangun infrastruktur
+        digital yang handal dan solusi IT yang efisien.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">
+          <i class="ri-eye-line"></i> Lihat Project Saya
+        </a>
+        <a href="#contact" class="btn-ghost">
+          <i class="ri-send-plane-line"></i> Hubungi Saya
+        </a>
+      </div>
+    </div>
+
+    <!-- Foto profil + info kanan hero -->
+    <div class="hero-visual">
+
+      <!-- Frame foto utama -->
+      <div class="photo-frame glass-card">
+        <!-- ⬇️ GANTI src="foto.jpg" dengan path foto kamu! -->
+        <!-- Contoh: src="foto.jpg" jika fotomu ada di folder yang sama -->
+        <div class="photo-wrap">
+          <img
+            src="Picture/12410312 0094090004 Hafiz Ammar Al Arsyad.jpg"
+            alt="Foto Hafiz Ammar Al Arsyad"
+            class="profile-photo"
+            id="profilePhoto"
+            onerror="this.style.display='none'; document.getElementById('photoFallback').style.display='flex';"
+          />
+          <!-- Tampil jika foto tidak ditemukan -->
+          <div class="photo-fallback" id="photoFallback">
+            <i class="ri-user-3-line"></i>
+            <span>Ganti src="foto.jpg"<br/>dengan foto kamu</span>
+          </div>
+        </div>
+
+        <!-- Label status mengambang di atas foto -->
+        <div class="photo-badge-top">
+          <span class="badge-dot"></span> Open to PKL
+        </div>
+
+        <!-- Info nama di bawah foto -->
+        <div class="photo-info">
+          <strong>Hafiz Ammar</strong>
+          <span>Cybersecurity · SysAdmin · IT Support</span>
+        </div>
+
+        <!-- Dekorasi sudut -->
+        <div class="photo-corner tl"></div>
+        <div class="photo-corner tr"></div>
+        <div class="photo-corner bl"></div>
+        <div class="photo-corner br"></div>
+      </div>
+
+      <!-- Kartu statistik dihapus -->
+
+    </div>
+  </section>
+
+  <!-- ===================== TENTANG SAYA ===================== -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-label"><i class="ri-user-3-line"></i> Tentang Saya</div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            Saya adalah siswa <strong></strong>SMK Wikrama Kota Bogor</strong> jurusan <strong>Teknik Jaringan Komputer Dan Telekomunikasi (TJKT)</strong>
+            yang bersemangat di bidang CyberSecurity, networking, IT .
+            Saya percaya teknologi adalah jembatan menuju masa depan yang lebih baik.
+          </p>
+          <p>
+            Selama masa studi, saya aktif mengerjakan Tugas nyata mulai dari konfigurasi
+            Mikrotik, instalasi server Linux, Maintenance & Repair Komputer / Laptop.
+          </p>
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <i class="ri-map-pin-line"></i>
+              <span>Bogor, Jawa Barat</span>
+            </div>
+            <div class="highlight-item">
+              <i class="ri-graduation-cap-line"></i>
+              <span>SMK Wikrama Bogor TJKT – 2024-2027</span>
+            </div>
+            <div class="highlight-item">
+              <i class="ri-mail-line"></i>
+              <span>hafisammar11@gmail.com</span>
+            </div>
+          </div>
+          <a href="Picture/CV_Hafiz.pdf" class="btn-primary" download onclick="showToast('CV sedang diunduh...')">
+            <i class="ri-download-line"></i> Unduh CV
+          </a>
+        </div>
+        <!-- Terminal animasi dekoratif -->
+        <div class="terminal glass-card">
+          <div class="terminal-bar">
+            <span class="t-dot red"></span>
+            <span class="t-dot yellow"></span>
+            <span class="t-dot green"></span>
+            <span class="t-title">hafiz@portfolio:~</span>
+          </div>
+          <div class="terminal-body" id="terminalBody">
+            <!-- Diisi via JS dengan efek ketik -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== KEAHLIAN ===================== -->
+  <section class="section skills" id="skills">
+    <div class="container">
+      <div class="section-label"><i class="ri-code-s-slash-line"></i> Keahlian</div>
+      <h2 class="section-title">Apa yang Saya Kuasai?</h2>
+      <div class="skills-cards">
+
+        <!-- Cybersecurity -->
+        <div class="skill-card glass-card">
+          <div class="skill-card-icon" style="background: linear-gradient(135deg, #1e3a5f, #0f2027);">
+            <i class="ri-shield-keyhole-line"></i>
+          </div>
+          <h3>Cybersecurity</h3>
+          <ul class="skill-list">
+            <li><i class="ri-arrow-right-s-line"></i> Network Security</li>
+            <li><i class="ri-arrow-right-s-line"></i> Basic Malware </li>
+            <li><i class="ri-arrow-right-s-line"></i> Basic Penetration Testing</li>
+          </ul>
+        </div>
+
+        <!-- SysAdmin -->
+        <div class="skill-card glass-card">
+          <div class="skill-card-icon" style="background: linear-gradient(135deg, #1a3a2a, #0a2010);">
+            <i class="ri-server-line"></i>
+          </div>
+          <h3>System Administration</h3>
+          <ul class="skill-list">
+            <li><i class="ri-arrow-right-s-line"></i> Linux (Ubuntu/Debian)</li>
+            <li><i class="ri-arrow-right-s-line"></i> Virtualization (VmWare,VirtualBox)</li>
+            <li><i class="ri-arrow-right-s-line"></i> Docker (Dasar)</li>
+          </ul>
+        </div>
+
+        <!-- IT Support -->
+        <div class="skill-card glass-card">
+          <div class="skill-card-icon" style="background: linear-gradient(135deg, #1a1a3a, #0a0a2a);">
+            <i class="ri-customer-service-2-line"></i>
+          </div>
+          <h3>IT Support</h3>
+          <ul class="skill-list">
+            <li><i class="ri-arrow-right-s-line"></i> Troubleshooting Hardware</li>
+            <li><i class="ri-arrow-right-s-line"></i> Instalasi & Konfigurasi OS</li>
+            <li><i class="ri-arrow-right-s-line"></i> MikroTik RouterOS</li>
+            <li><i class="ri-arrow-right-s-line"></i> Tools Consultant</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROJECT / KARYA ===================== -->
+  <section class="section projects" id="projects">
+    <div class="container">
+      <div class="section-label"><i class="ri-folder-3-line"></i> Project</div>
+      <h2 class="section-title">Karya Terbaik Saya</h2>
+      <p class="section-sub">Klik project untuk melihat detail lengkap.</p>
+
+      <!-- Filter tombol -->
+      <div class="project-filters">
+        <button class="filter-btn active" data-filter="all">Semua</button>
+        <button class="filter-btn" data-filter="network">Jaringan</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="server">Server</button>
+      </div>
+
+      <!-- Grid project — data diambil dari JS -->
+      <div class="projects-grid" id="projectsGrid">
+        <!-- Card project diisi oleh script.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERTIFIKAT ===================== -->
+  <section class="section certificates" id="certificates">
+    <div class="container">
+      <div class="section-label"><i class="ri-award-line"></i> Sertifikat</div>
+      <h2 class="section-title">Sertifikat Saya</h2>
+      <p class="section-sub">Klik sertifikat untuk melihat lebih jelas.</p>
+
+      <div class="cert-grid" id="certGrid">
+
+        <!-- 1 -->
+        <div class="cert-card glass-card reveal">
+          <div class="cert-img-wrap">
+            <img src="Sertificate/agunacourse linux fundamental.png" alt="Linux Fundamental" class="cert-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="cert-placeholder"><i class="ri-award-fill"></i></div>
+          </div>
+          <div class="cert-body">
+            <h4>Linux Fundamental</h4>
+            <span>Aguna Course</span>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="cert-card glass-card reveal">
+          <div class="cert-img-wrap">
+            <img src="Sertificate/agunacourse Network fundamental.png" alt="Network Fundamental" class="cert-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="cert-placeholder"><i class="ri-award-fill"></i></div>
+          </div>
+          <div class="cert-body">
+            <h4>Network Fundamental</h4>
+            <span>Aguna Course</span>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="cert-card glass-card reveal">
+          <div class="cert-img-wrap">
+            <img src="Sertificate/agunacourse virtual machine.png" alt="Virtual Machine" class="cert-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="cert-placeholder"><i class="ri-award-fill"></i></div>
+          </div>
+          <div class="cert-body">
+            <h4>Virtual Machine</h4>
+            <span>Aguna Course</span>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="cert-card glass-card reveal">
+          <div class="cert-img-wrap">
+            <img src="Sertificate/Certificate Cisco Cyber Essential.png" alt="Cisco Cyber Essential" class="cert-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="cert-placeholder"><i class="ri-award-fill"></i></div>
+          </div>
+          <div class="cert-body">
+            <h4>Cyber Essential</h4>
+            <span>Cisco</span>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="cert-card glass-card reveal">
+          <div class="cert-img-wrap">
+            <img src="Sertificate/hackpoint Bug hunting.jpg" alt="Bug Hunting" class="cert-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="cert-placeholder"><i class="ri-award-fill"></i></div>
+          </div>
+          <div class="cert-body">
+            <h4>Bug Hunting</h4>
+            <span>Hackpoint</span>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="cert-card glass-card reveal">
+          <div class="cert-img-wrap">
+            <img src="Sertificate/sertificate IDN BUTF.jpg" alt="IDN BUTF" class="cert-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="cert-placeholder"><i class="ri-award-fill"></i></div>
+          </div>
+          <div class="cert-body">
+            <h4>Bug Hunting Ultimate Training Field</h4>
+            <span>IDN</span>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="cert-card glass-card reveal">
+          <div class="cert-img-wrap">
+            <img src="Sertificate/sertificate IDN CSCU.jpg" alt="IDN CSCU" class="cert-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="cert-placeholder"><i class="ri-award-fill"></i></div>
+          </div>
+          <div class="cert-body">
+            <h4>Certified Secure Computer User</h4>
+            <span>IDN</span>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="cert-card glass-card reveal">
+          <div class="cert-img-wrap">
+            <img src="Sertificate/sertificate IDN OYCJWP.jpg" alt="IDN OYCJWP" class="cert-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="cert-placeholder"><i class="ri-award-fill"></i></div>
+          </div>
+          <div class="cert-body">
+            <h4>Own Your Career Journey with Portfolio</h4>
+            <span>IDN</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LAPORAN PKL ===================== -->
+  <section class="section pkl" id="pkl">
+    <div class="container">
+      <div class="section-label"><i class="ri-file-text-line"></i> PKL</div>
+      <h2 class="section-title">Laporan PKL</h2>
+      <p class="section-sub">Dokumentasi kegiatan Praktik Kerja Lapangan yang telah saya jalani.</p>
+
+      <div class="pkl-grid">
+
+        <!-- ── CONTOH CARD — duplikat untuk PKL berikutnya ── -->
+        <!-- Ganti: nama perusahaan, periode, deskripsi, dan href PDF -->
+        <div class="pkl-card glass-card reveal">
+          <div class="pkl-card-header">
+            <div class="pkl-icon"><i class="ri-building-2-line"></i></div>
+            <div class="pkl-badge">PKL</div>
+          </div>
+          <div class="pkl-card-body">
+            <h3>Nama Perusahaan / Instansi</h3>
+            <span class="pkl-period"><i class="ri-calendar-line"></i> Bulan – Bulan · Tahun</span>
+            <p>Deskripsi singkat kegiatan PKL, divisi yang dimasuki, dan skill yang dipelajari selama PKL berlangsung.</p>
+          </div>
+          <div class="pkl-card-footer">
+            <a href="https://drive.google.com/drive/folders/1o7TeS2EzuvJd6gWmH6YzUrBTF_t7cEkO?usp=drive_link" class="btn-primary" target="_blank" onclick="showToast('Membuka laporan PKL...')">
+              <i class="ri-file-pdf-line"></i> Lihat Laporan
+            </a>
+          </div>
+        </div>
+
+        <!-- Tambah card baru di sini untuk PKL berikutnya -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LINK GOOGLE DRIVE ===================== -->
+  <section class="section drive" id="drive">
+    <div class="container">
+      <div class="section-label"><i class="ri-google-line"></i> Portofolio Lengkap</div>
+      <h2 class="section-title">Folder Google Drive</h2>
+      <p class="section-sub">
+        Semua tugas dan karya saya tersimpan rapi di sini.
+        Klik untuk mengakses folder.
+      </p>
+
+      <!-- Card utama link drive -->
+      <div class="drive-card glass-card">
+        <div class="drive-icon">
+          <i class="ri-google-fill"></i>
+        </div>
+        <div class="drive-info">
+          <h3>Folder Portofolio Hafiz Ammar</h3>
+          <p>Berisi Hasil Tugas atau Project yang pernah saya kerjakan</p>
+          <!-- ⬇️ GANTI href="" dengan link Google Drive kamu! -->
+          <a
+            href="https://drive.google.com/drive/folders/1dFenwNSwIs3RtFPCDyRJVAi-5GcOqoi2?usp=sharing"
+            class="btn-primary drive-btn"
+            target="_blank"
+            onclick="showToast('Membuka Google Drive...')"
+          >
+            <i class="ri-folder-open-line"></i> Buka Google Drive
+          </a>
+        </div>
+      </div>
+
+      <!-- Sub-folder/kategori -->
+      <div class="drive-categories drive-categories-center">
+        <a
+          href="#pkl"
+          class="drive-cat glass-card"
+          onclick="showToast('Lihat Laporan PKL...')"
+        >
+          <i class="ri-file-pdf-line"></i>
+          <span>Laporan PKL</span>
+        </a>
+        <a
+          href="#certificates"
+          class="drive-cat glass-card"
+          onclick="showToast('Lihat Sertifikat...')"
+        >
+          <i class="ri-award-line"></i>
+          <span>Sertifikat</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== KONTAK ===================== -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="section-label"><i class="ri-contacts-line"></i> Kontak</div>
+      <h2 class="section-title">Mari Terhubung!</h2>
+      <p class="section-sub">
+        Terbuka untuk kesempatan kerja, magang, freelance, atau sekadar ngobrol soal IT.
+      </p>
+
+      <div class="contact-grid">
+        <!-- Kartu kontak utama -->
+        <div class="contact-main glass-card">
+          <h3>Hubungi Langsung</h3>
+
+          <!-- Email dengan tombol copy -->
+          <div class="contact-item">
+            <div class="contact-icon"><i class="ri-mail-fill"></i></div>
+            <div class="contact-detail">
+              <span class="contact-label">Email</span>
+              <span class="contact-value" id="emailValue">hafisammar11@gmail.com</span>
+            </div>
+            <button class="copy-btn" onclick="copyEmail()" title="Salin email">
+              <i class="ri-file-copy-line"></i>
+            </button>
+          </div>
+
+          <!-- WhatsApp -->
+          <div class="contact-item">
+            <div class="contact-icon wa"><i class="ri-whatsapp-line"></i></div>
+            <div class="contact-detail">
+              <span class="contact-label">WhatsApp</span>
+              <span class="contact-value">+62 877 7714 6161</span>
+            </div>
+            <a
+              href="https://wa.me/6287777146161?text=Halo%20Hafiz!%20Saya%20tertarik%20dengan%20portofolio%20kamu."
+              class="copy-btn"
+              target="_blank"
+              onclick="showToast('Membuka WhatsApp...')"
+              title="Chat di WhatsApp"
+            >
+              <i class="ri-external-link-line"></i>
+            </a>
+          </div>
+
+          <!-- LinkedIn -->
+          <div class="contact-item">
+            <div class="contact-icon li"><i class="ri-linkedin-fill"></i></div>
+            <div class="contact-detail">
+              <span class="contact-label">LinkedIn</span>
+              <span class="contact-value">linkedin.com/in/hafiz-ammar-84a79537b</span>
+            </div>
+            <a
+              href="https://www.linkedin.com/in/hafiz-ammar-84a79537b"
+              class="copy-btn"
+              target="_blank"
+              onclick="showToast('Membuka LinkedIn...')"
+              title="Buka LinkedIn"
+            >
+              <i class="ri-external-link-line"></i>
+            </a>
+          </div>
+
+          <!-- GitHub — coming soon -->
+          <div class="contact-item" style="opacity:0.4; pointer-events:none;">
+            <div class="contact-icon gh"><i class="ri-github-fill"></i></div>
+            <div class="contact-detail">
+              <span class="contact-label">GitHub</span>
+              <span class="contact-value">Coming Soon</span>
+            </div>
+            <span class="copy-btn" title="Belum tersedia">
+              <i class="ri-time-line"></i>
+            </span>
+          </div>
+        </div>
+
+        <!-- Form pesan singkat -->
+        <div class="contact-form glass-card">
+          <h3>Kirim Pesan</h3>
+          <div class="form-group">
+            <label>Nama Lengkap</label>
+            <input type="text" class="form-input" id="formName" placeholder="Contoh: Budi Santoso" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-input" id="formEmail" placeholder="email@kamu.com" />
+          </div>
+          <div class="form-group">
+            <label>Pesan</label>
+            <textarea class="form-input" id="formMsg" rows="4" placeholder="Halo Hafiz, saya ingin..."></textarea>
+          </div>
+          <!-- Tombol kirim menggunakan mailto -->
+          <button class="btn-primary w-full" onclick="sendEmail()">
+            <i class="ri-send-plane-fill"></i> Kirim Pesan
+          </button>
+        </div>
+      </div>
+
+      <!-- Sosial media kecil -->
+      <div class="social-row">
+        <a href="#" class="social-icon" onclick="showToast('Instagram')" title="Instagram"><i class="ri-instagram-line"></i></a>
+        <a href="https://www.youtube.com/@saShiZy" class="social-icon" onclick="showToast('YouTube')" title="YouTube" target="_blank"><i class="ri-youtube-line"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        Dibuat dengan oleh
+        <strong>Hafiz Ammar</strong> · 2025
+      </p>
+      <p class="footer-sub">Desain & Kode sendiri · Siswa TKJ Kelas 12</p>
+    </div>
+  </footer>
+
+  <!-- File JS kita sendiri — selalu taruh di paling bawah -->
+  <script src="script.js"></script>
+</body>
+</html>
