@@ -5,25 +5,25 @@
 
 /* ─── 1. VARIABEL GLOBAL (ubah di sini untuk ganti tema) ─── */
 :root {
-  --bg-base:        #07050f;   /* Latar belakang paling gelap */
-  --bg-surface:     #0d0a1a;   /* Permukaan sedikit lebih terang */
-  --bg-elevated:    #120f1f;   /* Card / elemen terangkat */
+  --bg-base:        #121212;   /* Background utama Dark Charcoal */
+  --bg-surface:     #1a1a1a;   /* Surface sedikit lebih terang */
+  --bg-elevated:    #1e1e1e;   /* Card / elemen terangkat */
 
-  --accent:         #7209b7;   /* Ungu utama */
-  --accent-2:       #4cc9f0;   /* Cyan muda sekunder */
-  --accent-3:       #560bad;   /* Ungu gelap */
-  --neon-glow:      rgba(114,9,183,0.4);   /* Cahaya neon ungu */
-  --cyan-glow:      rgba(76,201,240,0.35); /* Cahaya neon cyan */
+  --accent:         #e63946;   /* Crimson Red utama */
+  --accent-2:       #ff6b6b;   /* Red muda sekunder */
+  --accent-3:       #c1121f;   /* Red gelap */
+  --neon-glow:      rgba(230,57,70,0.3);
+  --cyan-glow:      rgba(255,107,107,0.2);
 
-  --text-primary:   #f0eeff;   /* Teks utama (hampir putih) */
-  --text-secondary: #a09ec0;   /* Teks sekunder (abu-ungu) */
-  --text-muted:     #5c5a7a;   /* Teks redup */
+  --text-primary:   #f3f4f6;   /* Teks utama terang */
+  --text-secondary: #9ca3af;   /* Teks sekunder abu */
+  --text-muted:     #4b5563;   /* Teks redup */
 
-  --border:         rgba(114,9,183,0.22); /* Border transparan ungu */
-  --border-hover:   rgba(76,201,240,0.55); /* Border saat hover cyan */
+  --border:         rgba(230,57,70,0.18);
+  --border-hover:   rgba(230,57,70,0.5);
 
-  --glass-bg:       rgba(12,8,28,0.65);   /* Background kaca */
-  --glass-blur:     12px;                  /* Blur glassmorphism */
+  --glass-bg:       rgba(30,30,30,0.80);
+  --glass-blur:     12px;
 
   --radius:         16px;
   --radius-sm:      10px;
@@ -47,18 +47,17 @@ body {
   font-family: var(--font-main);
   line-height: 1.7;
   overflow-x: hidden;
-  /* Pola titik-titik dekoratif di latar */
   background-image:
-    radial-gradient(circle at 20% 20%, rgba(29,78,216,0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(96,165,250,0.06) 0%, transparent 50%),
-    radial-gradient(rgba(59,130,246,0.04) 1px, transparent 1px);
+    radial-gradient(circle at 20% 20%, rgba(230,57,70,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255,107,107,0.04) 0%, transparent 50%),
+    radial-gradient(rgba(230,57,70,0.03) 1px, transparent 1px);
   background-size: 100% 100%, 100% 100%, 28px 28px;
 }
 
 /* Scrollbar custom */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg-base); }
-::-webkit-scrollbar-thumb { background: var(--accent-3); border-radius: 99px; }
+::-webkit-scrollbar-track { background: var(--bg-surface); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 99px; }
 
 /* ─── 3. KURSOR CUSTOM (hanya desktop) ─── */
 @media (pointer: fine) {
@@ -75,7 +74,7 @@ body {
   .cursor-ring {
     position: fixed; top: 0; left: 0; z-index: 9998;
     width: 36px; height: 36px; border-radius: 50%;
-    border: 1.5px solid rgba(59,130,246,0.6);
+    border: 1.5px solid rgba(0,67,168,0.5);
     pointer-events: none;
     transform: translate(-50%, -50%);
     transition: transform 0.18s ease, width 0.2s, height 0.2s, border-color 0.2s;
@@ -84,22 +83,22 @@ body {
   body.cursor-hover .cursor-ring {
     width: 56px; height: 56px;
     border-color: var(--accent);
-    background: rgba(59,130,246,0.08);
+    background: rgba(0,67,168,0.06);
   }
 }
 
 /* ─── 4. TOAST NOTIFIKASI ─── */
 .toast {
   position: fixed; bottom: 28px; right: 28px; z-index: 8000;
-  background: linear-gradient(135deg, #1a1030, #0d1a2a);
+  background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-left: 3px solid var(--accent);
   padding: 14px 20px;
   border-radius: var(--radius-sm);
   display: flex; align-items: center; gap: 10px;
   font-size: 0.9rem; color: var(--text-primary);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px var(--neon-glow);
-  transform: translateX(120%);  /* Tersembunyi di luar layar */
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  transform: translateX(120%);
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .toast.show { transform: translateX(0); }  /* Muncul saat ada class 'show' */
@@ -167,11 +166,11 @@ body {
 }
 /* Navbar berubah saat di-scroll (ditambah class 'scrolled' oleh JS) */
 .navbar.scrolled {
-  background: rgba(7,7,15,0.88);
+  background: rgba(18,18,18,0.92);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   padding: 12px 5%;
-  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
 }
 
 .nav-logo {
@@ -210,7 +209,7 @@ body {
 /* ─── 7. GLASSMORPHISM CARD ─── */
 /* Kelas reusable untuk efek kaca */
 .glass-card {
-  background: var(--glass-bg);
+  background: var(--bg-elevated);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid var(--border);
@@ -219,7 +218,7 @@ body {
 }
 .glass-card:hover {
   border-color: var(--border-hover);
-  box-shadow: 0 0 30px var(--neon-glow), 0 8px 32px rgba(0,0,0,0.4);
+  box-shadow: 0 0 24px var(--neon-glow), 0 8px 32px rgba(0,0,0,0.4);
   transform: translateY(-4px);
 }
 
@@ -227,35 +226,34 @@ body {
 .btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 13px 28px; border-radius: var(--radius-sm);
-  background: linear-gradient(135deg, var(--accent), var(--accent-3));
+  background: var(--accent);
   color: #fff; font-family: var(--font-main); font-weight: 700;
   font-size: 0.95rem; text-decoration: none; border: none; cursor: pointer;
   position: relative; overflow: hidden;
   transition: var(--transition);
-  box-shadow: 0 4px 20px rgba(59,130,246,0.3);
+  box-shadow: 0 4px 16px rgba(230,57,70,0.3);
 }
-/* Efek kilat saat hover */
 .btn-primary::before {
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(135deg, transparent, rgba(255,255,255,0.12), transparent);
   transform: translateX(-100%); transition: transform 0.5s ease;
 }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(59,130,246,0.5); }
+.btn-primary:hover { background: var(--accent-2); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(230,57,70,0.45); }
 .btn-primary:hover::before { transform: translateX(100%); }
 
 .btn-ghost {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 13px 28px; border-radius: var(--radius-sm);
   background: transparent;
-  border: 1.5px solid var(--border);
-  color: var(--text-primary); font-family: var(--font-main);
+  border: 1.5px solid var(--accent);
+  color: var(--accent); font-family: var(--font-main);
   font-weight: 700; font-size: 0.95rem; text-decoration: none;
   cursor: pointer; transition: var(--transition);
 }
 .btn-ghost:hover {
-  border-color: var(--accent); color: var(--accent);
-  background: rgba(59,130,246,0.08);
-  box-shadow: 0 0 16px var(--neon-glow);
+  border-color: var(--accent-2); color: var(--accent-2);
+  background: rgba(230,57,70,0.08);
+  box-shadow: 0 0 12px var(--neon-glow);
 }
 
 .w-full { width: 100%; justify-content: center; }
@@ -276,9 +274,7 @@ body {
   font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 800; line-height: 1.2;
   margin-bottom: 16px;
-  background: linear-gradient(135deg, var(--text-primary) 60%, var(--accent));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-primary);
 }
 .section-sub { color: var(--text-secondary); max-width: 540px; margin-bottom: 44px; }
 
@@ -289,19 +285,19 @@ body {
   position: relative; overflow: hidden;
   gap: 40px; flex-wrap: wrap;
 }
-/* Efek cahaya besar di latar hero */
+/* Hero background glow */
 .hero::before {
   content: ''; position: absolute;
   top: -200px; left: -200px;
   width: 700px; height: 700px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(29,78,216,0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0,67,168,0.07) 0%, transparent 70%);
   pointer-events: none;
 }
 .hero::after {
   content: ''; position: absolute;
   bottom: -100px; right: -100px;
   width: 500px; height: 500px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0,119,255,0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -323,7 +319,7 @@ body {
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 6px 16px; border-radius: 99px;
-  background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.3);
+  background: rgba(0,119,255,0.08); border: 1px solid rgba(0,119,255,0.25);
   color: var(--accent-2); font-size: 0.82rem; font-weight: 700;
   margin-bottom: 24px; animation: fadeInDown 0.7s ease both;
 }
@@ -332,8 +328,8 @@ body {
   animation: pulseDot 1.8s ease infinite;
 }
 @keyframes pulseDot {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(6,182,212,0.5); }
-  50%       { box-shadow: 0 0 0 6px rgba(6,182,212,0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,119,255,0.4); }
+  50%       { box-shadow: 0 0 0 6px rgba(0,119,255,0); }
 }
 
 .hero-greeting {
@@ -347,9 +343,7 @@ body {
   animation: fadeInDown 0.8s ease 0.2s both;
 }
 .name-accent {
-  background: linear-gradient(135deg, var(--accent) 30%, var(--accent-2));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--accent);
 }
 
 /* Teks berputar (role) */
@@ -394,9 +388,11 @@ body {
   width: 100%; aspect-ratio: 4 / 5;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: linear-gradient(135deg, #1a0a2e, #0a1a2e);
+  background: var(--bg-elevated);
   position: relative;
 }
+
+
 .profile-photo {
   width: 100%; height: 100%;
   object-fit: cover; object-position: top center;
@@ -416,17 +412,17 @@ body {
 .photo-wrap::after {
   content: ''; position: absolute; bottom: 0; left: 0; right: 0;
   height: 45%;
-  background: linear-gradient(to top, rgba(7,7,15,0.92) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0,43,114,0.85) 0%, transparent 100%);
   pointer-events: none;
 }
-/* Badge "Open to Work" mengambang di atas */
+/* Badge "Open to PKL" mengambang di atas */
 .photo-badge-top {
   position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
   display: inline-flex; align-items: center; gap: 7px;
   padding: 6px 16px; border-radius: 99px;
-  background: rgba(6,182,212,0.12); border: 1px solid rgba(6,182,212,0.4);
+  background: rgba(0,119,255,0.1); border: 1px solid rgba(0,119,255,0.35);
   color: var(--accent-2); font-size: 0.78rem; font-weight: 700;
-  white-space: nowrap; box-shadow: 0 0 16px rgba(6,182,212,0.25); z-index: 2;
+  white-space: nowrap; box-shadow: 0 0 12px rgba(0,119,255,0.15); z-index: 2;
 }
 /* Nama di overlay bawah foto */
 .photo-info {
@@ -473,11 +469,11 @@ body {
 .t-dot.yellow { background: #ffbd2e; }
 .t-dot.green  { background: #28ca41; }
 .t-title { color: var(--text-muted); font-size: 0.8rem; margin-left: auto; font-family: var(--font-mono); }
-.terminal-body { padding: 20px; font-family: var(--font-mono); font-size: 0.85rem; min-height: 200px; }
+.terminal-body { padding: 20px; font-family: var(--font-mono); font-size: 0.85rem; min-height: 200px; background: #0a0a0a; }
 .t-line { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; line-height: 1.6; }
-.t-prompt { color: var(--accent-2); white-space: nowrap; }
+.t-prompt { color: var(--accent); white-space: nowrap; }
 .t-cmd    { color: var(--text-primary); }
-.t-out    { color: var(--accent); }
+.t-out    { color: var(--accent-2); }
 .t-comment{ color: var(--text-muted); }
 
 /* ─── 12. SKILLS SECTION ─── */
@@ -834,7 +830,7 @@ body {
 .form-group label { display: block; font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 7px; font-weight: 600; }
 .form-input {
   width: 100%; padding: 12px 16px;
-  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  background: var(--bg-surface); border: 1px solid var(--border);
   border-radius: var(--radius-sm); color: var(--text-primary);
   font-family: var(--font-main); font-size: 0.9rem;
   outline: none; resize: vertical; transition: var(--transition);
@@ -842,7 +838,7 @@ body {
 .form-input::placeholder { color: var(--text-muted); }
 .form-input:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+  box-shadow: 0 0 0 3px rgba(230,57,70,0.12);
 }
 
 /* Sosial media row */
@@ -855,19 +851,20 @@ body {
   text-decoration: none; transition: var(--transition);
 }
 .social-icon:hover {
-  background: rgba(59,130,246,0.15); border-color: var(--accent); color: var(--accent);
+  background: rgba(0,67,168,0.1); border-color: var(--accent); color: var(--accent);
   transform: translateY(-3px);
   box-shadow: 0 8px 20px var(--neon-glow);
 }
 
 /* ─── 16. FOOTER ─── */
 .footer {
-  background: var(--bg-surface);
+  background: var(--accent);
   border-top: 1px solid var(--border);
   text-align: center; padding: 32px;
-  color: var(--text-secondary); font-size: 0.9rem;
+  color: rgba(255,255,255,0.8); font-size: 0.9rem;
 }
-.footer-sub { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; }
+.footer strong { color: #ffffff; }
+.footer-sub { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 4px; }
 
 /* ─── 17. ANIMASI MASUK ─── */
 @keyframes fadeInDown {
