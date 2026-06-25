@@ -8,29 +8,29 @@
 const projects = [
   {
     id: 1,
-    title: "",
-    category: "",
-    badge: "",
+    title: "Praktik Mikroti + AWS",
+    category: "Server + Mikrotik",
+    badge: "Server + Mikrotik",
     badgeClass: "badge-network",
-    desc: "---",
-    fullDesc: "---",
-    tags: ["Cisco", "Packet Tracer", "VLAN", "OSPF", "ACL"],
+    desc: "Implementasi dan integrasi infrastruktur jaringan lokal MikroTik dengan cloud server AWS.",
+    fullDesc: "Melakukan perancangan, konfigurasi, dan pengamanan infrastruktur jaringan lokal serta layanan cloud server perusahaan (PT TKJ Network Solution). Ruang lingkup pekerjaan meliputi implementasi VLAN, Hotspot, Firewall, dan manajemen bandwidth pada perangkat MikroTik, serta melakukan deploy Web Server (WordPress & MariaDB) berbasis Debian 13 di infrastruktur AWS EC2 lengkap dengan penguatan keamanan (hardened SSH & UFW).",
+    tags: ["Debian13", "AWS Academy", "Nginx", "Mikrotik", "SSH"],
     gradient: "linear-gradient(135deg, #3b0764, #1e1b4b)",
     icon: "ri-router-line",
-    link: "#"
+    link: "https://docs.google.com/document/d/e/2PACX-1vTvpipbOREb7ndy_7ZQclRneZTwgOZ2reqNYxL6UWteRBCu-DM0mg2Z-gIMiRduuA/pub"
   },
   {
     id: 2,
-    title: "",
-    category: "",
-    badge: "",
+    title: "Keamanan Jaringan Komputer",
+    category: "Mikrotik + Linux",
+    badge: "Mikrotik + Linux",
     badgeClass: "badge-web",
-    desc: "---",
-    fullDesc: "---",
-    tags: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+    desc: "Implementasi pengamanan jaringan menggunakan Router MikroTik, Debian 10, dan Kali Linux untuk simulasi pemindaian celah Nmap serta proteksi firewall.",
+    fullDesc: "Praktikum komprehensif mengenai pembangunan dan pengamanan jaringan berbasis MikroTik, Debian, dan Kali Linux. Meliputi pemindaian celah keamanan dengan Nmap, konfigurasi firewall filtering untuk memblokir ping eksternal, setup ARP static untuk mencegah spoofing, serta penerapan DMZ Port Forwarding guna mengamankan akses layanan server lokal.",
+    tags: ["Mikrotik", "Debian 11", "Kali Linux", "DHCP"],
     gradient: "linear-gradient(135deg, #0c4a6e, #0d3b2e)",
     icon: "ri-global-line",
-    link: "#"
+    link: "https://docs.google.com/document/d/e/2PACX-1vT3qLNMMr8elWqNMWV8ze0QAcDryWYK0xiR0wJ4P-DdO7aFMan_HKogaS43dKc8qA/pub"
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ const projects = [
     tags: ["Debian", "Apache", "Samba", "DNS", "SSH", "Mail Server"],
     gradient: "linear-gradient(135deg, #064e3b, #1a3a1a)",
     icon: "ri-server-line",
-    link: "https://drive.google.com/file/d/10vdqn51a_Iyg_7-v_tuZ1ePZMBzmbJFw/view"
+    link: "https://docs.google.com/document/d/e/2PACX-1vT8iNFR9PJNO4gr6DvNIqqf3O7ENDeWQLl0M_JHrheHyGUttTlrlq4A3H_us5xxiQ/pub"
   },
   {
     id: 4,
@@ -301,13 +301,13 @@ function typeRole() {
 // Baris-baris yang akan "diketik" di terminal
 const terminalLines = [
   { type: 'cmd',  content: 'whoami' },
-  { type: 'out',  content: 'hafiz_ammar @ TKJ-Graduate' },
+  { type: 'out',  content: 'hafiz_ammar @ TKJ-Kelas12' },
   { type: 'cmd',  content: 'cat skills.txt' },
-  { type: 'out',  content: '→ Networking, Linux, Web Dev' },
-  { type: 'cmd',  content: 'ping target.perusahaan.com' },
+  { type: 'out',  content: '→ Linux, IT Consultant, Networking' },
+  { type: 'cmd',  content: 'ping smkwikrama.com' },
   { type: 'comment', content: '# Reply from: 200.ms TTL=128' },
-  { type: 'cmd',  content: 'echo "Siap bekerja keras!"' },
-  { type: 'out',  content: 'Siap bekerja keras!' },
+  { type: 'cmd',  content: 'echo "Siap berkembang!"' },
+  { type: 'out',  content: 'Siap berkembang!' },
   { type: 'cmd',  content: '█' }, // Kursor terminal
 ];
 
